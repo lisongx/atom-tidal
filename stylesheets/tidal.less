@@ -4,5 +4,40 @@
 // for a full listing of what's available.
 @import "ui-variables";
 
-.tidal {
+.editor .line {
+  transition:  background-color, color 2s ease-in-out;
+  -webkit-transition: background-color, color 2s ease-out;
+
+  // &.line-green {
+  //   background-color: @green-color;
+  // }
+  //
+  // &.line-blue {
+  //   background-color: @blue-color;
+  // }
+
+  &.line-error {
+    background-color: fadeout(@background-color-error, 95%);
+    border: 1px solid fadeout(@background-color-error, 50%);
+  }
+
+  &.line-highlight {
+    background-color: @background-color-highlight;
+  }
+
+  &.eval-flash {
+    color: @text-color-selected;
+    background-color: fadein(@background-color-selected, 50%);
+  }
+
+  &.eval-success {
+    color: @text-color-success;
+    background-color: fadeout(@background-color-success, 50%);
+  }
+
+  &.eval-error,
+  &.eval-syntax-error {
+    color: @text-color-error;
+    background-color: @background-color-error;
+  }
 }
