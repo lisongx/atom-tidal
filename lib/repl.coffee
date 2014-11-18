@@ -15,22 +15,31 @@ class REPL
     @start()
     atom.commands.add 'atom-text-editor', 'tidal:eval': => @eval()
 
+  editorIsTidal: ->
+   editor = @getEditor()
+   editor and editor.getGrammar().scopeName is 'source.tidal'
+
   doSpawn: ->
-    @repl = spawn(execPath, ["-XOverloadedStrings"])
+    @repl = spawn(execPath, ['-XOverloadedStrings'])
     @repl.stdout.on('data', (data) -> console.log(data.toString('utf8')))
     @repl.stderr.on('data', (data) -> console.log(data.toString('utf8')))
 
   initTidal: ->
     commands = fs.readFileSync(bootFilePath).toString().split('\n')
 
-    (@writeLine(command) for command in commands)
+    (@tidalSendLine(command) for command in commands)
 
-  write: (command) ->
+  stdinWrite: (command) ->
     @repl.stdin.write(command)
 
-  writeLine: (command)->
-    @write(command)
-    @write('\n')
+  tidalSendLine: (command) ->
+    @stdinWrite(command)
+    @stdinWrite('\n')
+
+  tidalSendExpression: (expression) ->
+    @tidalSendLine(':{')
+    (@tidalSendLine(e) for e in expression.split('\n'))
+    @tidalSendLine(':}')
 
   start: ->
     @doSpawn()
@@ -40,7 +49,7 @@ class REPL
     atom.workspace.getActiveEditor()
 
   eval: ->
-    # return unless @editorIsSC()
+    return unless @editorIsTidal()
     [expression, range] = @currentExpression()
     @evalWithRepl(expression, range)
 
@@ -65,9 +74,7 @@ class REPL
         else
           # runtime error
           unflash?('eval-error')
-      # TODO: tmp on only sucess flash
-      @write(expression)
-      @write('\n')
+      @tidalSendExpression(expression)
       onSuccess()
     doIt()
 
@@ -112,4 +119,4 @@ class REPL
       decoration.update(type: 'line', class: cssClass)
       destroy = ->
         marker.destroy()
-      setTimeout(destroy, 100)
+      setTimeout(destroy, 120)

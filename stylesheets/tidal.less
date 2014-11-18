@@ -5,8 +5,8 @@
 @import "ui-variables";
 
 .editor .line {
-  transition:  background-color, color 2s ease-in-out;
-  -webkit-transition: background-color, color 2s ease-out;
+  transition:  background-color .8s ease-out;
+  -webkit-transition: background-color .8s ease-out;
 
   // &.line-green {
   //   background-color: @green-color;
@@ -27,7 +27,7 @@
 
   &.eval-flash {
     color: @text-color-selected;
-    background-color: fadein(@background-color-selected, 50%);
+    background-color: @background-color-selected;
   }
 
   &.eval-success {
