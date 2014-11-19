@@ -6,8 +6,12 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'tidal'
+      'label': 'Tidal'
       'submenu': [
+        {
+          'label': 'Boot Tidal',
+          'command': 'tidal:boot'
+        },
         {
           'label': 'Eval'
           'command': 'tidal:eval'

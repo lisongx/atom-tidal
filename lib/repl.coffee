@@ -11,8 +11,7 @@ class REPL
   repl = null
 
   constructor: (serializeState) ->
-    console.log('start')
-    @start()
+    atom.workspaceView.command 'tidal:boot', => @start()
     atom.commands.add 'atom-text-editor', 'tidal:eval': => @eval()
 
   editorIsTidal: ->
