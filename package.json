@@ -7,7 +7,7 @@
     "atom-text-editor": "tidal:eval",
     ".workspace": "tidal:boot"
   },
-  "repository": "https://github.com/atom/tidal",
+  "repository": "https://github.com/seansay/atom-tidal",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
