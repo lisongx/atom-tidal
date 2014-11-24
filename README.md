@@ -13,4 +13,10 @@ tidal is a live-coding pattern language
 
 4. Open a `.tidal` file, and select `Boot` in the submenu `Tidal`
 
-5. Then, you can eval single line or your selection by `cmd+enter`, your can customize it if you want
+5. Then, you can:
+
+  * `shift+enter` to evaluate current line or selection
+
+  * `cmd+enter` to evaluate multi-lines or selection
+
+  You can customize if you want, see [atom's doc](https://atom.io/docs/latest/customizing-atom#)
