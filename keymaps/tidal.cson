@@ -9,4 +9,5 @@
 # https://atom.io/docs/latest/advanced/keymaps
 
 '.workspace .editor:not(.mini)':
-  'cmd-enter': 'tidal:eval'
+  'shift-enter': 'tidal:eval'
+  'cmd-enter': 'tidal:eval-multi-line'

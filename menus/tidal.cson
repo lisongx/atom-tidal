@@ -15,6 +15,10 @@
         {
           'label': 'Eval'
           'command': 'tidal:eval'
+        },
+        {
+          'label': 'Eval Multi Line'
+          'command': 'tidal:eval-multi-line'
         }
       ]
     ]

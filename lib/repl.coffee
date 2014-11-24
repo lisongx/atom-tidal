@@ -3,6 +3,9 @@ spawn = require('child_process').spawn
 
 {$, Range} = require 'atom'
 
+CONST_LINE = 'line'
+CONST_MULTI_LINE = 'multi_line'
+
 execPath = "/usr/local/bin/ghci"
 bootFilePath = __dirname + "/BootTidal.hs"
 
@@ -12,7 +15,9 @@ class REPL
 
   constructor: (serializeState) ->
     atom.workspaceView.command 'tidal:boot', => @start()
-    atom.commands.add 'atom-text-editor', 'tidal:eval': => @eval()
+    atom.commands.add 'atom-text-editor',
+      'tidal:eval': => @eval(CONST_LINE)
+      'tidal:eval-multi-line': => @eval(CONST_MULTI_LINE)
 
   editorIsTidal: ->
    editor = @getEditor()
@@ -47,9 +52,9 @@ class REPL
   getEditor: ->
     atom.workspace.getActiveEditor()
 
-  eval: ->
+  eval: (evalType) ->
     return unless @editorIsTidal()
-    [expression, range] = @currentExpression()
+    [expression, range] = @currentExpression(evalType)
     @evalWithRepl(expression, range)
 
   evalWithRepl: (expression, range)->
@@ -80,7 +85,7 @@ class REPL
   destroy: ->
     @repl.kill()
 
-  currentExpression: ->
+  currentExpression: (evalType) ->
     editor = @getEditor()
     return unless editor?
 
@@ -89,18 +94,27 @@ class REPL
 
     if expression
       range = selection.getBufferRange()
+      [expression, range]
     else
-     # execute the line you are on
-      pos = editor.getCursorBufferPosition()
-      row = editor.getCursorScreenRow()
+      switch evalType
+        when CONST_LINE then @getLineExpression(editor)
+        when CONST_MULTI_LINE then @getMultiLineExpression(editor)
 
-      if row?
-        range = new Range([row, 0], [row + 1, 0])
-        expression = editor.lineForBufferRow(row)
-      else
-        range = null
-        expression = null
+  getLineExpression: (editor) ->
+    pos = editor.getCursorBufferPosition()
+    row = editor.getCursorScreenRow()
 
+    if row?
+      range = new Range([row, 0], [row + 1, 0])
+      expression = editor.lineForBufferRow(row)
+    else
+      range = null
+      expression = null
+    [expression, range]
+
+  getMultiLineExpression: (editor) ->
+    range = editor.getCurrentParagraphBufferRange()
+    expression = editor.getTextInBufferRange(range)
     [expression, range]
 
   evalFlash: (range) ->

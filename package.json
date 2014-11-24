@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "description": "Atom package for Tidal, a language for live coding pattern",
   "activationCommands": {
-    "atom-text-editor": "tidal:eval",
+    "atom-text-editor": ["tidal:eval", "tidal:eval-multi-line"],
     ".workspace": "tidal:boot"
   },
   "repository": "https://github.com/seansay/atom-tidal",
