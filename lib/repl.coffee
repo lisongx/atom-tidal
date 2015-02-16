@@ -114,7 +114,7 @@ class REPL
 
   getMultiLineExpression: (editor) ->
     range = editor.getCurrentParagraphBufferRange()
-    expression = editor.getTextInBufferRange(range)
+    expression = range and editor.getTextInBufferRange(range)
     [expression, range]
 
   evalFlash: (range) ->
