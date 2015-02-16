@@ -1,7 +1,8 @@
 fs = require('fs')
 spawn = require('child_process').spawn
 
-{$, Range} = require 'atom'
+{Range} = require 'atom'
+{$} = require 'atom-space-pen-views'
 
 CONST_LINE = 'line'
 CONST_MULTI_LINE = 'multi_line'

@@ -8,6 +8,6 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
 
-'.workspace .editor:not(.mini)':
+'atom-workspace atom-text-editor:not(.mini)':
   'shift-enter': 'tidal:eval'
   'cmd-enter': 'tidal:eval-multi-line'
