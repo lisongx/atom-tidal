@@ -4,6 +4,11 @@ Repl = require './repl'
 module.exports =
   tidalView: null
 
+  config:
+    ghciPath:
+      type: 'string'
+      default: '/usr/local/bin/ghci'
+
   activate: (state) ->
     @tidalRepl = new Repl()
     @tidalView = new TidalView(state.tidalViewState)

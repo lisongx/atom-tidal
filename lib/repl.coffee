@@ -7,7 +7,6 @@ spawn = require('child_process').spawn
 CONST_LINE = 'line'
 CONST_MULTI_LINE = 'multi_line'
 
-execPath = "/usr/local/bin/ghci"
 bootFilePath = __dirname + "/BootTidal.hs"
 
 module.exports =
@@ -25,9 +24,16 @@ class REPL
    editor and editor.getGrammar().scopeName is 'source.tidal'
 
   doSpawn: ->
-    @repl = spawn(execPath, ['-XOverloadedStrings'])
+    @repl = spawn(@getGhciPath(), ['-XOverloadedStrings'])
     @repl.stdout.on('data', (data) -> console.log(data.toString('utf8')))
     @repl.stderr.on('data', (data) -> console.log(data.toString('utf8')))
+
+  getGhciPath: ->
+    path = atom.config.get('tidal.ghciPath')
+
+    if not fs.existsSync(path)
+      throw "Your ghci path is not valid"
+    path
 
   initTidal: ->
     commands = fs.readFileSync(bootFilePath).toString().split('\n')
@@ -54,6 +60,7 @@ class REPL
     atom.workspace.getActiveEditor()
 
   eval: (evalType) ->
+    return unless @repl
     return unless @editorIsTidal()
     [expression, range] = @currentExpression(evalType)
     @evalWithRepl(expression, range)
