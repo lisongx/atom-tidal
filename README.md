@@ -1,19 +1,21 @@
 # Tidal for Atom
 
-tidal is a live-coding pattern language
+[tidal](https://github.com/tidalcycles/Tidal) is a live-coding pattern language
 
 
 ## Setup
 
-1. [Install Tidal](https://github.com/yaxu/Tidal/blob/master/doc/tidal.md#installation)
+1. [Install Tidal](https://github.com/tidalcycles/Tidal/blob/master/doc/tidal.md#installation)
 
 2. Install `tidal` package in `atom` editor
 
-3. running `dirt`
+3. The default `ghci` path is in `/usr/local/bin/ghci`, you can change this in the package setting view.
 
-4. Open a `.tidal` file, and select `Boot` in the submenu `Tidal`
+4. running `dirt`
 
-5. Then, you can:
+5. Open a `.tidal` file, and select `Boot` in the submenu `Tidal`
+
+6. Then, you can:
 
   * `shift+enter` to evaluate current line or selection
 
