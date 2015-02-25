@@ -12,8 +12,11 @@ bootFilePath = __dirname + "/BootTidal.hs"
 module.exports =
 class REPL
   repl = null
+  consoleView = null
 
-  constructor: (serializeState) ->
+  constructor: (consoleView) ->
+    @consoleView = consoleView
+
     atom.workspaceView.command 'tidal:boot', => @start()
     atom.commands.add 'atom-text-editor',
       'tidal:eval': => @eval(CONST_LINE)
@@ -25,8 +28,8 @@ class REPL
 
   doSpawn: ->
     @repl = spawn(@getGhciPath(), ['-XOverloadedStrings'])
-    @repl.stdout.on('data', (data) -> console.log(data.toString('utf8')))
-    @repl.stderr.on('data', (data) -> console.log(data.toString('utf8')))
+    @repl.stdout.on('data', (data) => @consoleView.logStdout(data.toString('utf8')))
+    @repl.stderr.on('data', (data) => @consoleView.logStderr(data.toString('utf8')))
 
   getGhciPath: ->
     path = atom.config.get('tidal.ghciPath')
@@ -91,7 +94,7 @@ class REPL
     doIt()
 
   destroy: ->
-    @repl.kill()
+    @repl?.kill()
 
   currentExpression: (evalType) ->
     editor = @getEditor()

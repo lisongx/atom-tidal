@@ -1,8 +1,8 @@
-TidalView = require './tidal-view'
+ConsoleView = require './console-view'
 Repl = require './repl'
 
 module.exports =
-  tidalView: null
+  consoleView: null
 
   config:
     ghciPath:
@@ -10,12 +10,12 @@ module.exports =
       default: '/usr/local/bin/ghci'
 
   activate: (state) ->
-    @tidalRepl = new Repl()
-    @tidalView = new TidalView(state.tidalViewState)
+    @consoleView = new ConsoleView(state.consoleViewState)
+    @tidalRepl = new Repl(@consoleView)
 
   deactivate: ->
     @tidalRepl.destroy()
-    @tidalView.destroy()
+    @consoleView.destroy()
 
   serialize: ->
-    tidalViewState: @tidalView.serialize()
+    consoleViewState: @consoleView.serialize()
