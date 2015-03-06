@@ -63,7 +63,15 @@ class REPL
     atom.workspace.getActiveEditor()
 
   eval: (evalType) ->
-    return unless @repl
+    if not @repl?
+      atom.confirm
+        message: "You haven't boot your tidal server!"
+        buttons:
+          'Cancel': =>
+          'Boot': =>
+            @start()
+            return
+
     return unless @editorIsTidal()
     [expression, range] = @currentExpression(evalType)
     @evalWithRepl(expression, range)
