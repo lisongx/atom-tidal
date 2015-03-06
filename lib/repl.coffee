@@ -67,10 +67,10 @@ class REPL
       atom.confirm
         message: "You haven't boot your tidal server!"
         buttons:
-          'Cancel': =>
           'Boot': =>
             @start()
-            return
+          'Cancel': =>
+      return
 
     return unless @editorIsTidal()
     [expression, range] = @currentExpression(evalType)
