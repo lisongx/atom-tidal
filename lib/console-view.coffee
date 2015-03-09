@@ -1,6 +1,8 @@
 module.exports =
 class ConsoleView
   constructor: (serializeState) ->
+
+  initUI: ->
     @tidalConsole = document.createElement('div')
     @tidalConsole.classList.add('tidal', 'console')
 

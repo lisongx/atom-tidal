@@ -17,7 +17,10 @@ class REPL
   constructor: (consoleView) ->
     @consoleView = consoleView
 
-    atom.workspaceView.command 'tidal:boot', => @start()
+    atom.commands.add 'atom-workspace',
+      'tidal:boot': =>
+        return unless @editorIsTidal()
+        @start()
     atom.commands.add 'atom-text-editor',
       'tidal:eval': => @eval(CONST_LINE)
       'tidal:eval-multi-line': => @eval(CONST_MULTI_LINE)
@@ -56,6 +59,7 @@ class REPL
     @tidalSendLine(':}')
 
   start: ->
+    @consoleView.initUI()
     @doSpawn()
     @initTidal()
 
@@ -63,6 +67,8 @@ class REPL
     atom.workspace.getActiveEditor()
 
   eval: (evalType) ->
+    return unless @editorIsTidal()
+
     if not @repl?
       atom.confirm
         message: "You haven't boot your tidal server!"
@@ -72,7 +78,6 @@ class REPL
           'Cancel': =>
       return
 
-    return unless @editorIsTidal()
     [expression, range] = @currentExpression(evalType)
     @evalWithRepl(expression, range)
 
