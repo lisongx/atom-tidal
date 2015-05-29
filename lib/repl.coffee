@@ -64,7 +64,7 @@ class REPL
     @initTidal()
 
   getEditor: ->
-    atom.workspace.getActiveEditor()
+    atom.workspace.getActiveTextEditor()
 
   eval: (evalType) ->
     return unless @editorIsTidal()
@@ -126,11 +126,11 @@ class REPL
 
   getLineExpression: (editor) ->
     pos = editor.getCursorBufferPosition()
-    row = editor.getCursorScreenRow()
+    row = editor.getCursorScreenPosition().row
 
     if row?
       range = new Range([row, 0], [row + 1, 0])
-      expression = editor.lineForBufferRow(row)
+      expression = editor.lineTextForBufferRow(row)
     else
       range = null
       expression = null
@@ -153,7 +153,7 @@ class REPL
     # return fn to flash error/success and destroy the flash
 
     (cssClass) ->
-      decoration.update(type: 'line', class: cssClass)
+      decoration.setProperties({type: 'line', class: cssClass})
       destroy = ->
         marker.destroy()
       setTimeout(destroy, 120)
