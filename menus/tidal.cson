@@ -17,8 +17,20 @@
           'command': 'tidal:eval'
         },
         {
+          'label': 'Eval And Copy'
+          'command': 'tidal:eval-copy'
+        },
+        {
           'label': 'Eval Multi Line'
           'command': 'tidal:eval-multi-line'
+        },
+        {
+          'label': 'Eval Multi Line And Copy'
+          'command': 'tidal:eval-multi-line-copy'
+        },
+        {
+          'label': 'Hush'
+          'command': 'tidal:hush'
         }
       ]
     ]
