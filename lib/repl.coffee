@@ -26,10 +26,14 @@ class REPL
       'tidal:eval-multi-line': => @eval(CONST_MULTI_LINE, false)
       'tidal:eval-copy': => @eval(CONST_LINE, true)
       'tidal:eval-multi-line-copy': => @eval(CONST_MULTI_LINE, true)
+      'tidal:hush': => @hush()
 
   editorIsTidal: ->
    editor = @getEditor()
    editor and editor.getGrammar().scopeName is 'source.tidal'
+
+  hush: ->
+    @tidalSendExpression("hush")
 
   doSpawn: ->
     @repl = spawn(@getGhciPath(), ['-XOverloadedStrings'])
