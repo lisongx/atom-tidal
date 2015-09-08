@@ -22,8 +22,10 @@ class REPL
         return unless @editorIsTidal()
         @start()
     atom.commands.add 'atom-text-editor',
-      'tidal:eval': => @eval(CONST_LINE)
-      'tidal:eval-multi-line': => @eval(CONST_MULTI_LINE)
+      'tidal:eval': => @eval(CONST_LINE, false)
+      'tidal:eval-multi-line': => @eval(CONST_MULTI_LINE, false)
+      'tidal:eval-copy': => @eval(CONST_LINE, true)
+      'tidal:eval-multi-line-copy': => @eval(CONST_MULTI_LINE, true)
 
   editorIsTidal: ->
    editor = @getEditor()
@@ -66,7 +68,7 @@ class REPL
   getEditor: ->
     atom.workspace.getActiveTextEditor()
 
-  eval: (evalType) ->
+  eval: (evalType, copy) ->
     return unless @editorIsTidal()
 
     if not @repl?
@@ -79,14 +81,15 @@ class REPL
       return
 
     [expression, range] = @currentExpression(evalType)
-    @evalWithRepl(expression, range)
+    @evalWithRepl(expression, range, copy)
 
-  evalWithRepl: (expression, range)->
+  evalWithRepl: (expression, range, copy)->
     return unless expression
 
     doIt = () =>
       if range?
         unflash = @evalFlash(range)
+        copyRange = if copy then @copyRange(range)
 
       onSuccess = () ->
         unflash?('eval-success')
@@ -124,16 +127,20 @@ class REPL
         when CONST_LINE then @getLineExpression(editor)
         when CONST_MULTI_LINE then @getMultiLineExpression(editor)
 
-  getLineExpression: (editor) ->
-    pos = editor.getCursorBufferPosition()
-    row = editor.getCursorScreenPosition().row
+  copyRange: (range) ->
+    editor = @getEditor()
+    endRow = range.end.row
+    endRow++
+    text = editor.getTextInBufferRange(range)
+    text = '\n' + text + '\n'
+    text = '\n' + text if endRow > editor.getLastBufferRow()
+    console.log text
+    editor.getBuffer().insert([endRow, 0], text)
 
-    if row?
-      range = new Range([row, 0], [row + 1, 0])
-      expression = editor.lineTextForBufferRow(row)
-    else
-      range = null
-      expression = null
+  getLineExpression: (editor) ->
+    cursor = editor.getCursors()[0]
+    range =  cursor.getCurrentLineBufferRange()
+    expression = range and editor.getTextInBufferRange(range)
     [expression, range]
 
   getMultiLineExpression: (editor) ->
