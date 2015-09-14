@@ -10,5 +10,8 @@
 
 'atom-workspace atom-text-editor:not(.mini)':
   'shift-enter': 'tidal:eval'
+  'alt-shift-enter': 'tidal:eval-copy'
   'cmd-enter': 'tidal:eval-multi-line'
   'ctrl-enter': 'tidal:eval-multi-line'
+  'alt-cmd-enter': 'tidal:eval-multi-line-copy'
+  'shift-cmd-h': 'tidal:hush'
