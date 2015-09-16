@@ -1,7 +1,7 @@
 {
   "name": "tidal",
   "main": "./lib/tidal",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Atom package for Tidal, a language for live coding pattern",
   "activationCommands": {
     "atom-text-editor": [
