@@ -7,7 +7,7 @@ module.exports =
   config:
     ghciPath:
       type: 'string'
-      default: '/usr/local/bin/ghci'
+      default: 'ghci'
 
   activate: (state) ->
     @consoleView = new ConsoleView(state.consoleViewState)
