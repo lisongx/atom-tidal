@@ -42,9 +42,6 @@ class REPL
 
   getGhciPath: ->
     path = atom.config.get('tidal.ghciPath')
-
-    if not fs.existsSync(path)
-      throw "Your ghci path: '#{path}' is invalid"
     path
 
   initTidal: ->
