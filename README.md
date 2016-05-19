@@ -18,7 +18,7 @@ To send patterns to [SuperDirt](https://github.com/musikinformatik/SuperDirt), u
 d1 $ sound "bd cp"
 ````
 
-To send patterns to [classic dirt](https://github.com/tidalcycles/dirt), use `d1` .. `d9`, e.g.:
+To send patterns to [classic dirt](https://github.com/tidalcycles/dirt), use `c1` .. `c9`, e.g.:
 
 ````
 c1 $ sound "bd cp"
