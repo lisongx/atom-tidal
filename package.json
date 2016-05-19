@@ -2,7 +2,7 @@
   "name": "tidalcycles",
   "main": "./lib/tidalcycles",
   "version": "0.8.1",
-  "description": "Atom package for version 0.8 and later of TidalCycles, a language for live coding pattern. This version has not yet been released, for now please install the 'tidal' package instead.",
+  "description": "Atom package for version 0.7 and later of TidalCycles, a language for live coding pattern. This is a new version of the 'tidal' plugin, which you will need to uninstall before using this one",
   "activationCommands": {
     "atom-text-editor": [
       "tidalcycles:eval",
