@@ -4,7 +4,7 @@ class ConsoleView
 
   initUI: ->
     @tidalConsole = document.createElement('div')
-    @tidalConsole.classList.add('tidal', 'console')
+    @tidalConsole.classList.add('tidalcycles', 'console')
 
     @log = document.createElement('div')
     @tidalConsole.appendChild(@log)

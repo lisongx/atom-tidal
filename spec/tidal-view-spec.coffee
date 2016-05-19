@@ -1,4 +1,4 @@
-TidalView = require '../lib/tidal-view'
+TidalView = require '../lib/tidalcycles-view'
 
 describe "TidalView", ->
   it "has one valid test", ->

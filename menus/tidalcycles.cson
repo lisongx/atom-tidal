@@ -6,31 +6,31 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'Tidal'
+      'label': 'TidalCycles'
       'submenu': [
         {
-          'label': 'Boot Tidal',
-          'command': 'tidal:boot'
+          'label': 'Boot TidalCycles',
+          'command': 'tidalcycles:boot'
         },
         {
           'label': 'Eval'
-          'command': 'tidal:eval'
+          'command': 'tidalcycles:eval'
         },
         {
           'label': 'Eval And Copy'
-          'command': 'tidal:eval-copy'
+          'command': 'tidalcycles:eval-copy'
         },
         {
           'label': 'Eval Multi Line'
-          'command': 'tidal:eval-multi-line'
+          'command': 'tidalcycles:eval-multi-line'
         },
         {
           'label': 'Eval Multi Line And Copy'
-          'command': 'tidal:eval-multi-line-copy'
+          'command': 'tidalcycles:eval-multi-line-copy'
         },
         {
           'label': 'Hush'
-          'command': 'tidal:hush'
+          'command': 'tidalcycles:hush'
         }
       ]
     ]

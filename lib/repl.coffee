@@ -18,19 +18,19 @@ class REPL
     @consoleView = consoleView
 
     atom.commands.add 'atom-workspace',
-      'tidal:boot': =>
+      'tidalcycles:boot': =>
         return unless @editorIsTidal()
         @start()
     atom.commands.add 'atom-text-editor',
-      'tidal:eval': => @eval(CONST_LINE, false)
-      'tidal:eval-multi-line': => @eval(CONST_MULTI_LINE, false)
-      'tidal:eval-copy': => @eval(CONST_LINE, true)
-      'tidal:eval-multi-line-copy': => @eval(CONST_MULTI_LINE, true)
-      'tidal:hush': => @hush()
+      'tidalcycles:eval': => @eval(CONST_LINE, false)
+      'tidalcycles:eval-multi-line': => @eval(CONST_MULTI_LINE, false)
+      'tidalcycles:eval-copy': => @eval(CONST_LINE, true)
+      'tidalcycles:eval-multi-line-copy': => @eval(CONST_MULTI_LINE, true)
+      'tidalcycles:hush': => @hush()
 
   editorIsTidal: ->
    editor = @getEditor()
-   editor and editor.getGrammar().scopeName is 'source.tidal'
+   editor and editor.getGrammar().scopeName is 'source.tidalcycles'
 
   hush: ->
     @tidalSendExpression("hush")
@@ -41,7 +41,7 @@ class REPL
     @repl.stderr.on('data', (data) => @consoleView.logStderr(data.toString('utf8')))
 
   getGhciPath: ->
-    path = atom.config.get('tidal.ghciPath')
+    path = atom.config.get('tidalcycles.ghciPath')
     path
 
   initTidal: ->
@@ -73,13 +73,7 @@ class REPL
     return unless @editorIsTidal()
 
     if not @repl?
-      atom.confirm
-        message: "You haven't boot your tidal server!"
-        buttons:
-          'Boot': =>
-            @start()
-          'Cancel': =>
-      return
+       @start()
 
     [expression, range] = @currentExpression(evalType)
     @evalWithRepl(expression, range, copy)
