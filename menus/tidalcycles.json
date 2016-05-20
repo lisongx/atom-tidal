@@ -1,0 +1,30 @@
+{
+    "context-menu": {
+        "atom-text-editor": []
+    },
+    "menu": [{
+        "label": "Packages",
+        "submenu": [{
+            "label": "TidalCycles",
+            "submenu": [{
+                "label": "Boot TidalCycles",
+                "command": "tidalcycles:boot"
+            }, {
+                "label": "Eval",
+                "command": "tidalcycles:eval"
+            }, {
+                "label": "Eval And Copy",
+                "command": "tidalcycles:eval-copy"
+            }, {
+                "label": "Eval Multi Line",
+                "command": "tidalcycles:eval-multi-line"
+            }, {
+                "label": "Eval Multi Line And Copy",
+                "command": "tidalcycles:eval-multi-line-copy"
+            }, {
+                "label": "Hush",
+                "command": "tidalcycles:hush"
+            }]
+        }]
+    }]
+}
