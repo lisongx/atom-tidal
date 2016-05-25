@@ -1,5 +1,5 @@
 {WorkspaceView} = require 'atom'
-TidalCycles = require '../lib/tidalcycles'
+#TidalCycles = require '../lib/tidalcycles'
 
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 #
