@@ -1,7 +1,7 @@
 {
   "name": "tidalcycles",
   "main": "./lib/tidalcycles",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Atom package for version 0.7 and later of TidalCycles, a language for live coding pattern. This is a new version of the 'tidal' plugin, which you will need to uninstall before using this one",
   "activationCommands": {
     "atom-text-editor": [
@@ -14,7 +14,7 @@
     "atom-space-pen-views": "^2.0.3"
   },
   "repository": "https://github.com/tidalcycles/atom-tidalcycles",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   }
