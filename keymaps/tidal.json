@@ -1,5 +1,5 @@
 {
-    "atom-workspace atom-text-editor:not(.mini)": {
+    "atom-workspace atom-text-editor[data-grammar~='tidal']": {
         "shift-enter": "tidalcycles:eval",
         "alt-shift-enter": "tidalcycles:eval-copy",
         "cmd-enter": "tidalcycles:eval-multi-line",
