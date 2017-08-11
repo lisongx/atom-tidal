@@ -1,24 +1,25 @@
-# Tidal for Atom
+# TidalCycles plugin for Atom
 
-[tidal](https://github.com/tidalcycles/Tidal) is a live-coding pattern language
+[TidalCycles](https://tidalcycles.org) is a live-coding pattern language
 
+For installation instructions, please visit:
+  http://tidalcycles.org/getting_started.html
 
-## Setup
+Then, you can:
+  * Open a `.tidal` file
+  
+  * `shift+enter` to evaluate the current line or selection
 
-1. [Install Tidal](https://github.com/tidalcycles/Tidal/blob/master/doc/tidal.md#installation)
+  * `cmd+enter` to evaluate multiple-lines or selection
 
-2. Install `tidal` package in `atom` editor
+To send patterns to [SuperDirt](https://github.com/musikinformatik/SuperDirt), use `d1` .. `d9`, e.g.:
 
-3. The default `ghci` path is in `/usr/local/bin/ghci`, you can change this in the package setting view.
+````
+d1 $ sound "bd cp"
+````
 
-4. running `dirt`
+To send patterns to [classic dirt](https://github.com/tidalcycles/dirt), use `c1` .. `c9`, e.g.:
 
-5. Open a `.tidal` file, and select `Boot` in the submenu `Tidal`
-
-6. Then, you can:
-
-  * `shift+enter` to evaluate current line or selection
-
-  * `cmd+enter` to evaluate multi-lines or selection
-
-  You can customize if you want, see [atom's doc](https://atom.io/docs/latest/customizing-atom#)
+````
+c1 $ sound "bd cp"
+````

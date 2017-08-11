@@ -1,20 +1,20 @@
 {
-  "name": "tidal",
-  "main": "./lib/tidal",
-  "version": "2.1.0",
-  "description": "Atom package for Tidal, a language for live coding pattern",
+  "name": "tidalcycles",
+  "main": "./lib/tidalcycles",
+  "version": "0.9.3",
+  "description": "Atom package for TidalCycles, a language for live coding pattern.",
   "activationCommands": {
     "atom-text-editor": [
-      "tidal:eval",
-      "tidal:eval-multi-line"
+      "tidalcycles:eval",
+      "tidalcycles:eval-multi-line"
     ],
-    "atom-workspace": "tidal:boot"
+    "atom-workspace": "tidalcycles:boot"
   },
   "dependencies": {
     "atom-space-pen-views": "^2.0.3"
   },
-  "repository": "https://github.com/seansay/atom-tidal",
-  "license": "MIT",
+  "repository": "https://github.com/tidalcycles/atom-tidalcycles",
+  "license": "GPL-3.0",
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   }

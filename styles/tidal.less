@@ -4,7 +4,7 @@
 // for a full listing of what's available.
 @import "ui-variables";
 
-atom-text-editor::shadow .line {
+atom-text-editor.editor .line {
   transition:  background-color .8s ease-out;
   -webkit-transition: background-color .8s ease-out;
 
@@ -42,10 +42,14 @@ atom-text-editor::shadow .line {
   }
 }
 
-
-atom-panel div.tidal.console {
-  height: 80px;
+atom-panel div.tidalcycles.console {
+  height: 100px;
   padding: 3px 10px;
-  font-size: 12px;
+  font-size: 14px;
   overflow: scroll;
+  font-family: Consolas, monospace;
+
+  .error{
+    color: @text-color-error;
+  }
 }

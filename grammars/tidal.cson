@@ -1,8 +1,8 @@
-'scopeName': 'source.tidal'
+'scopeName': 'source.tidalcycles'
 'fileTypes': [
-  'tidal'
+  'tidalcycles', 'tidal'
 ]
-'name': 'Tidal'
+'name': 'TidalCycles'
 'patterns': [
   {
     'captures':
@@ -16,7 +16,7 @@
   }
   {
     'match': '\\b(d[1-9])\\b'
-    'name': 'support.function.tidal'
+    'name': 'support.function.tidalcycles'
   }
   {
     'match': '\\(\\)'

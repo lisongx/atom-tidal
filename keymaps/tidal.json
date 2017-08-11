@@ -1,0 +1,10 @@
+{
+    "atom-workspace atom-text-editor[data-grammar~='tidalcycles']": {
+        "shift-enter": "tidalcycles:eval",
+        "alt-shift-enter": "tidalcycles:eval-copy",
+        "cmd-enter": "tidalcycles:eval-multi-line",
+        "ctrl-enter": "tidalcycles:eval-multi-line",
+        "alt-cmd-enter": "tidalcycles:eval-multi-line-copy",
+        "shift-cmd-h": "tidalcycles:hush"
+    }
+}
