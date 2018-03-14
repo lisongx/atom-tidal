@@ -1,6 +1,6 @@
-# 【Depercated】
+# 【Moved】
 
-Since [tidal version 0.8](https://github.com/tidalcycles/Tidal), the offical atom plugin [atom-tidalcycles](https://github.com/tidalcycles/atom-tidalcycles) will be used.
+Since [tidal version 0.8](https://github.com/tidalcycles/Tidal), the offical atom plugin [atom-tidalcycles](https://github.com/tidalcycles/atom-tidalcycles) should be used.
 
 # Tidal for Atom
 
